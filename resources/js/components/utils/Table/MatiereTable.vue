@@ -21,7 +21,7 @@
             <span class="badge bg-primary mr-3">8</span>
           </td>
           <td> 
-            <button class="btn btn-sm btn-primary" @click="$root.$emit('matiere:edit',matiere)"> <i class="fas fa-edit"></i> </button>
+            <button class="btn btn-sm btn-primary" @click="$root.$emit('matiere:edit',matiere)"> <i class="fas fa-sm fa-edit"></i> </button>
           </td>
         </tr>
       </tbody>
@@ -42,17 +42,23 @@ export default {
 
   data () {
     return {
-      // matieres : []
+      matieres : []
     }
   },
 
   mounted(){
-    this.$http.get('/api/structure/matiere').then( response => {
+    /* this.$http.get('/api/structure/matiere').then( response => {
       // this.data = response.data;
       this.matieres= response.data;
       // console.log('data', this.data);
     })
-    .catch(error => console.log( error));
+    .catch(error => console.log( error)); */
+    
+    ecole.getMatieres()
+    .then(response => {
+      this.matieres = response.data
+    })
+    .catch(error => console.log( error))
   },
 
   computed : {

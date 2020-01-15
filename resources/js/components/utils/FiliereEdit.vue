@@ -28,14 +28,7 @@
                  <div class="container">
                    <div class="row">
                      <div class="col-md-12">
-                       <form >
-                        <v-text-field v-model="data.matiere.code" 
-                          :counter="form.countDefault" :rules="form.rules.namesRules('Code')" label="Code Matiere" required>
-                          </v-text-field>
-                        <v-text-field v-model="data.matiere.libelle" 
-                          :counter="form.countDefault" :rules="form.rules.namesRules('Libelle')" label="Libelle Matiere" required>
-                          </v-text-field>
-                      </form>
+                       <filiere-form></filiere-form>
                      </div>
                    </div>
                  </div>
@@ -44,7 +37,7 @@
                 <div class="tab-pane fade" id="assignement" role="tabpanel" aria-labelledby="assignement-tab">
                   <div class="container">
                     <div class="my-3">
-                      <h4>Assigner une matiere a une classe</h4>
+                      <h4>Ajouter une classe à la filière</h4>
                     </div>
                     <div class="row">
                       <div class="col-md-12">
@@ -73,60 +66,35 @@
 </template>
 
 <script>
+
+import FiliereForm from "./Form/FiliereForm";
 export default {
   props : {
     id : {
       type: String,
-      default : 'matiere-create'
+      default : 'filiere-modal'
     },
     title : {
       type : String,
-      default : 'Mettre A Jour Une Matiere'
+      default : 'Gerer les filières et les classes'
     },
     data : {
-      type : [Array,Object],
-      default(){
-        return {
-          matiere : {}
-        }
-      }
+      
     }
+  },
+
+  components : {
+    FiliereForm
   },
 
   data(){
     return {
-      form:{
-					valid : true,
-					countDefault : 255,
-					rules:{
-						namesRules(name=""){
-              name = name==""? 'This' : name;
-						return [
-							v => !!v || `${name} field is required`,
-							v => (v && v.length <= 255) || 'Name must be less than 10 characters'
-						]
-						},
-						emailRules(){
-							return [
-								v => !!v || 'E-mail is required',
-								v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-							]
-						}
-					}
-      }
+      
     }
   },
 
   mounted (){
-    this.$root.$on('matiere:edit', (data) => {
-      this.data.matiere = data;
-      $('#matiere-create').modal('show');
-    })
-
-    this.$root.$on('matiere:create', () =>{
-      this.data.matiere = {};
-      $('#matiere-create').modal('show');
-    })
+    
   }
 }
 </script>

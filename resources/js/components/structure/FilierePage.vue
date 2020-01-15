@@ -1,5 +1,5 @@
 <template>
-	<div class="wrapper">
+  <div class="wrapper">
 	  <!-- <nav-bar> </nav-bar>
 	  <side-bar> </side-bar> -->
 	  <div class="content-wrapper">
@@ -45,8 +45,11 @@
 	          </div>
 	          <div class="card-body">
 	            <div class="row">
+								<div class="col-md-12">
+									<button type="button" @click="filiereModalShow()" class="btn btn-block bg-gradient-success"> <i class="fas fa-sm fa-plus"></i> Nouveau</button>
+								</div>
 	              <div class="col-md-12">
-									<enseignant-table> </enseignant-table>
+	                <filiere-table></filiere-table>
 	              </div>
 	            </div>
 	          </div>    
@@ -54,37 +57,36 @@
 	      </div>
 	    </section>
 	    <!-- /.content -->
+			<!-- Filiere Modal -->
+			<filiere-edit ref="filieremodal"></filiere-edit>
 
-			<!-- Edit Global enseignant Modal -->
-			<enseignant-edit :id="'enseignant-create'" > </enseignant-edit>
-			<!-- Edit Global enseignant Modal -->
 	  </div>
 	</div>
 </template>
 
 <script>
-	import EnseignantTable from "../utils/Table/EnseignantTable";
-	import EnseignantEdit from "../utils/EnseignantEdit";
-	export default {
 
-		data(){
-			return {
-				title:'Enseignant',
-				/* data : {
-					enseignant: {},
-				}, */
-				
-			}
-		},
-		methods : {
-			
-		},
-		mounted(){
-			
-		},
-		components: {
-			EnseignantTable,
-			EnseignantEdit
+import FiliereTable from "../utils/Table/FiliereTable";
+import FiliereEdit from "../utils/FiliereEdit";
+export default {
+  data(){
+    return {
+      title:'Filiere'
+    }
+	},
+	components : {
+		FiliereTable,
+		FiliereEdit
+	},
+	methods :{
+		filiereModalShow(){
+			// this.$refs.filieremodal.title='Gestion des Filières';
+			$('#filiere-modal').modal('show');
 		}
+	},
+  mounted(){
+
+    console.log('Component mounted')
+  }
 	}
 </script>

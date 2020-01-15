@@ -7,6 +7,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.ecole = require('./ecole').default;
+
+console.log('ecole',window.ecole);
 
 
 import VueRouter from 'vue-router';

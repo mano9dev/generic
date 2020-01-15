@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Salle;
 use Illuminate\Http\Request;
 
 class SalleController extends Controller
@@ -31,10 +32,10 @@ class SalleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Salle  $salle
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Salle $salle)
     {
         //
     }
@@ -43,10 +44,10 @@ class SalleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Salle  $salle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Salle $salle)
     {
         //
     }
@@ -54,10 +55,10 @@ class SalleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Salle  $salle
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Salle $salle)
     {
         //
     }

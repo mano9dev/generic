@@ -28,6 +28,9 @@ class EnseignantController extends Controller
     public function store(Request $request)
     {
         //
+        $enseignant= $request->only(['nom','prenoms','email','telephone','adresse']);
+
+        return Enseignant::create(enseignant);
     }
 
     /**
@@ -51,6 +54,11 @@ class EnseignantController extends Controller
     public function update(Request $request, Enseignant $enseignant)
     {
         //
+        $params= $request->only(['nom','prenoms','email','telephone','adresse']);
+
+        // Ajouter un event if enseignant update pour signaler la mise a jour ici
+
+        return $enseignant->update($params);
     }
 
     /**

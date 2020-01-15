@@ -1,24 +1,55 @@
 
-import VueResource from 'vue-resource';
-
-
-const Vue = require('vue');
-
-Vue.use(VueResource);
-const app = new Vue;
-const $http = app.$http;
+const axios = require('axios');
 
 class Ecole {
   
-  static getEnseignants() {
-   var promise = new Promise;
+  getEnseignants() {
+   const promise = new Promise((resolve, reject) =>{
 
-    $http.get('/api/structure/matiere')
-    .then( (response)=>{
-      return promise.resolve(response)
-    } )
-    .catch( error => { return promise.reject(error) })
+     axios.get('/api/structure/matiere')
+     .then( (response)=>{
+       resolve(response)
+     } )
+     .catch( error => { return reject(error) })
+   });
+
+   return promise;
+  }
+  getMatieres(){
+    const promise = new Promise((resolve, reject) =>{
+      axios.get('/api/structure/matiere').then(response => {
+        resolve(response);
+      })
+      .catch(error => reject(error));
+    })
+
+    return promise;
+  }
+  getFilieres(){
+    const promise = new Promise((resolve,reject) => {
+      axios.get('/api/structure/filiere')
+      .then( (response)=>{
+        resolve(response);
+      } )
+      .catch((error) => {
+        reject(error)
+      })
+    })
+
+    return promise;
   }
 
-  
+  createFiliere(data){
+    const promise = new Promise((resolve,reject) =>{
+      axios.post('/api/structure/filiere',data)
+      .then( response => resolve(response))
+      .catch( error => { reject(error)})
+    })
+
+    return promise;
+  }
 }
+
+const ecole = new Ecole;
+
+export default ecole;

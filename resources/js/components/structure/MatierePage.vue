@@ -45,6 +45,9 @@
 	          </div>
 	          <div class="card-body">
 	            <div class="row">
+								<div class="col-md-12">
+									<button type="button" @click="$root.$emit('matiere:create')" class="btn btn-block bg-gradient-success"> <i class="fas fa-sm fa-plus"></i> Nouveau</button>
+								</div>
 	              <div class="col-md-12">
 	                <matiere-table> </matiere-table>
 	              </div>
@@ -56,14 +59,14 @@
 	    <!-- /.content -->
 
 			<!-- Modal Edit Matiere  -->
-			<matiere-edit> </matiere-edit>
+			<matiere-edit ref="modal"> </matiere-edit>
 	  </div>
 	</div>
 </template>
 
 <script>
 
-	import MatiereTable from "../utils/MatiereTable";
+	import MatiereTable from "../utils/Table/MatiereTable";
 	import MatiereEdit from "../utils/MatiereEdit";
 	export default {
 		components : {
@@ -78,13 +81,7 @@
 			}
 		},
 		mounted(){
-			// console.log('Component mounted')
-			// axios.get('api/structure/matiere')
-			// .then( response => {
-			// 	console.log('response.data', response.data);
-			// 	this.matieres = response.data;
-			// })
-			// .catch( error => {console.log('error', error)});
+			
 		}
 	}
 </script>

@@ -22,11 +22,15 @@ class UserController extends Controller
     public function login(Request $request)
     {
       # code...
-      if (Auth::attempt($request->only(['email','password']))) {
+
+      $attending=User::where('username',$request->username)->orWhere('email',$request->username)->first();
+      $credentials=[];
+      $credentials['email']=optional($attending)->email;
+      $credentials['password']=$request->password;
+      if (Auth::attempt($credentials)) {
         # code...
         $user= Auth::user();
-        $token=$user->createToken('Gen');
-        $user->api_token =  $token->accessToken;
+        
 
         return response(['success' =>'Authorised','user' =>$user]);
         
@@ -34,13 +38,13 @@ class UserController extends Controller
 
         return response(['error' =>'Unauthorised'],401);
       }
+
     }
 
     public function logout()
     {
       $user=Auth::user();
       Auth::logout();
-      $user->token()->revoke();
 
       return response(['logout' =>'successfull logout'], 200);
     }

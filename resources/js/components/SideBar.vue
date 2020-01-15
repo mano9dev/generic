@@ -65,6 +65,12 @@
               </router-link>
             </li>
             <li class="nav-item">
+              <router-link to="/structure/filiere" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Filiere</p>
+              </router-link>
+            </li>
+            <li class="nav-item">
               <router-link to="/structure/cours" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Cours</p>

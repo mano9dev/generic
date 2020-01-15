@@ -8,9 +8,9 @@
           <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
 
-            <form @submit.prevent="submitForm(user)">
+            <form @submit.prevent="submitForm(user)" autocomplete="off">
               <div class="input-group mb-3">
-                <input type="email" name="email" v-model="user.email" class="form-control" placeholder="Email" >
+                <input type="email" autocomplete="off" autofocus name="email" v-model="user.username" class="form-control" placeholder="Email" >
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-envelope"></span>
@@ -18,7 +18,7 @@
                 </div>
               </div>
               <div class="input-group mb-3">
-                <input type="password" name="password" v-model="user.password" class="form-control" placeholder="Password" >
+                <input type="password" autocomplete="off" name="password" v-model="user.password" class="form-control" placeholder="Password" >
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-lock"></span>
@@ -62,31 +62,40 @@ export default {
   data(){
     return {
       user :{
-        email:'',
-        password:''
+         
       }
     }
   },
   mounted(){
-    var user = {
-      email : 'janedoe@gmail.com',
-      password : 'Jane-19'
-    }
-    this.submitForm(user);
+    
+    this.user.username='janedoe@gmail.com';
+    this.user.password='Jane-19';
+    // this.submitForm(user);
   },
   methods:{
     submitForm(user){
-      axios.post('/api/login',user)
+      const data = {
+        grant_type : 'password',
+        client_id : '606515c9d8282ab7cc09390c371d09650a16b0bad83719294b2c26cc658aaf62d104904f9e4c5ab6',
+        client_secret : 'ZtjpZP7rBMW4MuEPVz2OXLBLxeRxwlfW4299GmBe',
+        username : user.username,
+        password : user.password,
+        scope : ''
+      };
+      
+      // axios.post('/api/login',user)
+      
+      axios.post('/oauth/token',user)
       .then( response => {
-        // console.log('response',response.data);
-        // localStorage.setItem('api',response.data.user.api_token);
-        // localStorage.setItem('user',JSON.stringify(response.data.user));
-        sessionStorage.setItem('api',response.data.user.api_token);
-        sessionStorage.setItem('user',JSON.stringify(response.data.user));
-        // console.log('login success', true);
-          this.$router.push('/');
+        console.log('response',response.data);
+
+        // sessionStorage.setItem('api',response.data.user.api_token);
+        // sessionStorage.setItem('user',JSON.stringify(response.data.user));
+
+          // this.$router.push('/');
         })
       .catch( err => console.log('error',err));
+
     },
     logout(){
 

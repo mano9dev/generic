@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Filiere;
 use Illuminate\Http\Request;
 
 class FiliereController extends Controller
@@ -26,15 +27,18 @@ class FiliereController extends Controller
     public function store(Request $request)
     {
         //
+        $filiere=$request->only(['codeFil','libelleFil']);
+
+        return Filiere::create($filiere);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Filiere  $filiere
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Filiere $filiere)
     {
         //
     }
@@ -43,10 +47,10 @@ class FiliereController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Filiere  $filiere
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Filiere $filiere)
     {
         //
     }
@@ -54,11 +58,17 @@ class FiliereController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Filiere  $filiere
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Filiere $filiere)
     {
         //
+    }
+
+    public function assignClasse(Request $request,Filiere $filiere)
+    {
+        # code...
+        
     }
 }

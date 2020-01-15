@@ -30,6 +30,9 @@ class MatiereController extends Controller
     public function store(Request $request)
     {
         //
+        $matiere= $request->only('code','libelle');
+
+        return Matiere::create($matiere);
     }
 
     /**
@@ -54,6 +57,9 @@ class MatiereController extends Controller
     public function update(Request $request, Matiere $matiere)
     {
         //
+        $params=$request->only('code','libelle');
+
+        return $matiere->update($params);
     }
 
     /**

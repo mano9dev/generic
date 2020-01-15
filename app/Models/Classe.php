@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Classe extends Model
 {
     //
+    protected $guarded = [];
+    
     public function filiere()
     {
         return $this->belongsTo('App\Models\Filiere', 'fil_codeFil', 'codeFil');
