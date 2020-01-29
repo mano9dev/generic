@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Enseignant extends Model
 {
     //
+    protected $fillable=['nom','prenoms','email','telephone','adresse'];
     public function matiere()
     {
         return $this->belongsToMany('App\Models\Matiere', 'enseigner', 'ens_id', 'matiere_id')

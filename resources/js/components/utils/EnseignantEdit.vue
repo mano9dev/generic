@@ -17,54 +17,18 @@
               <h4>Custom Content Below</h4>
               <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill" href="#custom-content-below-home" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Editer</a>
+                  <a class="nav-link active" id="editer-tab" data-toggle="pill" href="#editer" role="tab" aria-controls="editer" aria-selected="true">Editer</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="custom-content-below-profile-tab" data-toggle="pill" href="#custom-content-below-profile" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="custom-content-below-messages-tab" data-toggle="pill" href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages" aria-selected="false">Messages</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="custom-content-below-settings-tab" data-toggle="pill" href="#custom-content-below-settings" role="tab" aria-controls="custom-content-below-settings" aria-selected="false">Settings</a>
+                  <a class="nav-link" id="assigner-tab" data-toggle="pill" href="#assigner" role="tab" aria-controls="assigner" aria-selected="false">Assigner</a>
                 </li>
               </ul>
               <div class="tab-content" id="custom-content-below-tabContent">
-                <div class="tab-pane fade show active" id="custom-content-below-home" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
-                   <v-form 
-                  v-model="form.valid"
-                  lazy-validation
-                  >
-                    <v-text-field v-model="data.enseignant.nom" 
-                    :counter="form.countDefault" :rules="form.rules.namesRules()" label="Nom" required>
-                    </v-text-field>
-
-                    <v-text-field v-model="data.enseignant.prenoms" 
-                    :counter="form.countDefault" :rules="form.rules.namesRules()" label="Prenoms" required>
-                    </v-text-field>
-
-                    <v-text-field v-model="data.enseignant.email" 
-                    :counter="form.countDefault" :rules="form.rules.emailRules()" label="Email" required>
-                    </v-text-field>
-                    
-                    <v-text-field v-model="data.enseignant.telephone" 
-                    :counter="form.countDefault" :rules="form.rules.namesRules()" label="Telephone" required>
-                    </v-text-field>
-
-                    <v-text-field v-model="data.enseignant.adresse" 
-                    :counter="form.countDefault" :rules="form.rules.namesRules()" label="Adresse" >
-                    </v-text-field>
-
-                  </v-form>
+                <div class="tab-pane fade show active" id="editer" role="tabpanel" aria-labelledby="editer-tab">
+                   <enseignant-form ref="enseignantForm"> </enseignant-form>
                 </div>
-                <div class="tab-pane fade" id="custom-content-below-profile" role="tabpanel" aria-labelledby="custom-content-below-profile-tab">
+                <div class="tab-pane fade" id="assigner" role="tabpanel" aria-labelledby="assigner-tab">
                   Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus. Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam. 
-                </div>
-                <div class="tab-pane fade" id="custom-content-below-messages" role="tabpanel" aria-labelledby="custom-content-below-messages-tab">
-                  Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus volutpat augue id mi placerat mollis. Vivamus faucibus eu massa eget condimentum. Fusce nec hendrerit sem, ac tristique nulla. Integer vestibulum orci odio. Cras nec augue ipsum. Suspendisse ut velit condimentum, mattis urna a, malesuada nunc. Curabitur eleifend facilisis velit finibus tristique. Nam vulputate, eros non luctus efficitur, ipsum odio volutpat massa, sit amet sollicitudin est libero sed ipsum. Nulla lacinia, ex vitae gravida fermentum, lectus ipsum gravida arcu, id fermentum metus arcu vel metus. Curabitur eget sem eu risus tincidunt eleifend ac ornare magna. 
-                </div>
-                <div class="tab-pane fade" id="custom-content-below-settings" role="tabpanel" aria-labelledby="custom-content-below-settings-tab">
-                  Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis. 
                 </div>
               </div>
               <div class="tab-custom-content">
@@ -86,7 +50,11 @@
 </template>
 
 <script>
+import EnseignantForm from "./Form/EnseignantForm";
 export default {
+  components : {
+    EnseignantForm
+  },
   props : {
     id : {
       type : String,
@@ -105,40 +73,24 @@ export default {
 
   mounted(){
     this.$root.$on('enseignant:edit',(data) => {
-      console.log('enseignant', data);
-      const enseignant = data;
-      this.data.enseignant = enseignant;
 
-      $('#'+'enseignant-create').modal('show');
+      this.$refs.enseignantForm.enseignant=data;
+      this.showModal();
+      // $('#'+'enseignant-edit').modal('show');
     })
+    
   },
 
   data(){
     return {
-      form:{
-					valid : true,
-					countDefault : 255,
-					rules:{
-						namesRules(name=""){
-              name = name==""? 'This' : name;
-						return [
-							v => !!v || `${name} field is required`,
-							v => (v && v.length <= 255) || 'Name must be less than 10 characters'
-						]
-						},
-						emailRules(){
-							return [
-								v => !!v || 'E-mail is required',
-								v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-							]
-						}
-					}
-      }
+      
+    }
+  },
+
+  methods : {
+    showModal(){
+      $('#'+this.id).modal('show');
     }
   }
 }
 </script>
-
-<style>
-
-</style>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -30,10 +31,9 @@ class UserController extends Controller
       if (Auth::attempt($credentials)) {
         # code...
         $user= Auth::user();
-        
+        $user->api_token=Str::random(80);
 
-        return response(['success' =>'Authorised','user' =>$user]);
-        
+        return response(['response' =>'Authorised', 'user'=> $user ]);
       }else {
 
         return response(['error' =>'Unauthorised'],401);

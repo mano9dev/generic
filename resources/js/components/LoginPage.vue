@@ -83,16 +83,14 @@ export default {
         scope : ''
       };
       
-      // axios.post('/api/login',user)
-      
-      axios.post('/oauth/token',user)
+      axios.post('/api/login',user)
       .then( response => {
         console.log('response',response.data);
 
-        // sessionStorage.setItem('api',response.data.user.api_token);
-        // sessionStorage.setItem('user',JSON.stringify(response.data.user));
+        sessionStorage.setItem('api',response.data.user.api_token);
+        sessionStorage.setItem('user',JSON.stringify(response.data.user));
 
-          // this.$router.push('/');
+          this.$router.push('/dashboard');
         })
       .catch( err => console.log('error',err));
 

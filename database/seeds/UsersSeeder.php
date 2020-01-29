@@ -20,7 +20,7 @@ class UsersSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('Jane-19'),
             'remember_token' => Str::random(10),
-            'api_token' => Str::random(60),
+            'api_token' => Str::random(80),
         ]);
 
         User::create([
@@ -29,7 +29,7 @@ class UsersSeeder extends Seeder
         'email_verified_at' => now(),
         'password' => Hash::make('John-19'),
         'remember_token' => Str::random(10),
-        'api_token' => Str::random(60),
+        'api_token' => Str::random(80),
     	]);
 
     }

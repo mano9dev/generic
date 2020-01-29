@@ -22,7 +22,7 @@ class FiliereSeeder extends Seeder
     		['Gestion Banque et Assurance','GBA'],
     		['Gestion des Ressources Humaines','GRH'],
     		['Marketing et Action Commerciale','MAC'],
-            ['Gestion Comptabilité','GC'],
+            // ['Gestion Comptabilité','GC'],
     		['Planification','PLAN'],
         ];
 

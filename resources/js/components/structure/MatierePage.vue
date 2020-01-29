@@ -74,10 +74,16 @@
 			MatiereEdit
 		},
 
+		props : {
+			title : {
+				type : String,
+				default : 'Matière'
+			}
+		},
+
 		data(){
 			return {
-				title:'Matière',
-				matieres : [],
+				
 			}
 		},
 		mounted(){

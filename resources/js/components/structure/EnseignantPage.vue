@@ -41,7 +41,14 @@
 	      <div class="container-fluid-2">
 	        <div class="card card-2">
 	          <div class="card-header">
-	            <h3 class="card-title">{{title}}</h3>
+							<div class="row">
+								<div class="col-md-6">
+									<h3 class="card-title">{{title}}</h3>
+								</div>
+								<div class="col-md-6">
+									<button type="button" @click="create()" class="btn btn-block bg-gradient-success"> <i class="fas fa-sm fa-plus"></i> Ajouter</button>
+								</div>
+							</div>
 	          </div>
 	          <div class="card-body">
 	            <div class="row">
@@ -56,7 +63,7 @@
 	    <!-- /.content -->
 
 			<!-- Edit Global enseignant Modal -->
-			<enseignant-edit :id="'enseignant-create'" > </enseignant-edit>
+			<enseignant-edit :id="'enseignant-edit'" ref="enseignantModal"> </enseignant-edit>
 			<!-- Edit Global enseignant Modal -->
 	  </div>
 	</div>
@@ -66,25 +73,29 @@
 	import EnseignantTable from "../utils/Table/EnseignantTable";
 	import EnseignantEdit from "../utils/EnseignantEdit";
 	export default {
+		components: {
+			EnseignantTable,
+			EnseignantEdit
+		},
 
+		props : {
+			title : {
+				type : String,
+				default : 'Enseignant'
+			}
+		},
 		data(){
 			return {
-				title:'Enseignant',
-				/* data : {
-					enseignant: {},
-				}, */
 				
 			}
 		},
 		methods : {
-			
+			create(){
+				this.$refs.enseignantModal.showModal();
+			}
 		},
 		mounted(){
 			
 		},
-		components: {
-			EnseignantTable,
-			EnseignantEdit
-		}
 	}
 </script>

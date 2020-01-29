@@ -5,9 +5,11 @@
  */
 
 require('./bootstrap');
+// const Ecole = require('./ecole').default;
+import Ecole from "./ecole";
 
 window.Vue = require('vue');
-window.ecole = require('./ecole').default;
+window.ecole = new Ecole;
 
 console.log('ecole',window.ecole);
 

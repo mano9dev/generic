@@ -51,6 +51,12 @@ export default {
       
     })
     .catch(error => console.log( error)); */
+    ecole.getFilieres()
+    .then( response => {
+        console.log('response',response)
+        this.filieres=response.data
+      })
+    .catch(error => console.log('error',error));
   },
 
   computed : {

@@ -7,7 +7,7 @@
       <v-text-field v-model="filiere.libelleFil" 
         :counter="form.countDefault" :rules="form.rules.namesRules('Libelle Filière')" label="Libelle Filière" required>
         </v-text-field>
-        <button class="btn btn-sm btn-primary" @click="submitForm()"> {{btnTitle}} </button>
+        <button class="btn btn-sm btn-primary" @click.prevent="submitForm(filiere)"> {{btnTitle}} </button>
     </form>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
   props : {
     btnTitle:{
       type: String,
-      default : 'Créer'
+      default : 'Enregistrer'
     }
   },
 
@@ -46,8 +46,14 @@ export default {
     }
   },
   methods : {
-    submitForm(){
-      alert('submit Form')
+    submitForm(filiere){
+      // ecole.createFiliere(filiere);
+      console.log('emit submit form',filiere);
+      
+      this.$emit('submitForm',filiere);
+    },
+    createFiliere(filiere){
+      ecole.createFiliere(filiere);
     }
   }
 }

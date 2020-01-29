@@ -16,6 +16,7 @@ class FiliereController extends Controller
     public function index()
     {
         //
+        return Filiere::all();
     }
 
     /**

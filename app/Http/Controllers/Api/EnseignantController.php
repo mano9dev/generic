@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Enseignant;
 use Illuminate\Http\Request;
+use App\Events\EnseignantCreated;
+use App\Http\Controllers\Controller;
 
 class EnseignantController extends Controller
 {
@@ -30,7 +31,10 @@ class EnseignantController extends Controller
         //
         $enseignant= $request->only(['nom','prenoms','email','telephone','adresse']);
 
-        return Enseignant::create(enseignant);
+        // $enseignant=Enseignant::create($enseignant);
+
+        broadcast(new EnseignantCreated($enseignant));
+        return response(['created' => true]);
     }
 
     /**

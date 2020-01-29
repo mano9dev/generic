@@ -95,8 +95,9 @@ export default {
     },
 
     update(value){
-      const data= value;
-      this.$root.$emit('enseignant:edit',data);
+      
+      // This emited signal is send from $root component to EnseignantEdit component
+      this.$root.$emit('enseignant:edit',value);
     }
   },
   computed : {

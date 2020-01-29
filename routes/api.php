@@ -19,6 +19,8 @@
     Route::apiResource('structure/matiere', 'MatiereController');
 
     Route::apiResource('structure/enseignant', 'EnseignantController');
+
+    Route::apiResource('structure/filiere', 'FiliereController');
     
     Route::post('login', 'UserController@login');
   });

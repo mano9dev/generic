@@ -1,8 +1,9 @@
 
 const axios = require('axios');
 
-class Ecole {
+const Ecole = class Ecole {
   
+  // Enseignant
   getEnseignants() {
    const promise = new Promise((resolve, reject) =>{
 
@@ -15,6 +16,14 @@ class Ecole {
 
    return promise;
   }
+
+  createEnseignant(enseignant){
+    
+    return axios.post('/api/structure/enseignant',enseignant);
+  }
+
+
+  // Matiere
   getMatieres(){
     const promise = new Promise((resolve, reject) =>{
       axios.get('/api/structure/matiere').then(response => {
@@ -25,6 +34,8 @@ class Ecole {
 
     return promise;
   }
+
+  // Filiere
   getFilieres(){
     const promise = new Promise((resolve,reject) => {
       axios.get('/api/structure/filiere')
@@ -50,6 +61,4 @@ class Ecole {
   }
 }
 
-const ecole = new Ecole;
-
-export default ecole;
+export default Ecole;
