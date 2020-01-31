@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const Ecole = class Ecole {
   
-  // Enseignant
+  /* Enseignant CRUD CODE HERE */
   getEnseignants() {
    const promise = new Promise((resolve, reject) =>{
 
@@ -23,7 +23,7 @@ const Ecole = class Ecole {
   }
 
 
-  // Matiere
+  /* Matiere CRUD CODE HERE */
   getMatieres(){
     const promise = new Promise((resolve, reject) =>{
       axios.get('/api/structure/matiere').then(response => {
@@ -35,7 +35,7 @@ const Ecole = class Ecole {
     return promise;
   }
 
-  // Filiere
+  /* Filiere CRUD CODE HERE */
   getFilieres(){
     const promise = new Promise((resolve,reject) => {
       axios.get('/api/structure/filiere')
@@ -50,14 +50,25 @@ const Ecole = class Ecole {
     return promise;
   }
 
-  createFiliere(data){
+  createFiliere(filiere){
     const promise = new Promise((resolve,reject) =>{
-      axios.post('/api/structure/filiere',data)
+      axios.post('/api/structure/filiere',filiere)
       .then( response => resolve(response))
       .catch( error => { reject(error)})
     })
 
     return promise;
+  }
+
+  /* Classe CRUD CODE HERE */
+  createClasse(classe){
+
+    return axios.post('/api/structure/classe',classe);
+  }
+
+  getClasses(){
+
+    return axios.get('/api/structure/classe');
   }
 }
 

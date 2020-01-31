@@ -9,13 +9,23 @@ require('./bootstrap');
 import Ecole from "./ecole";
 
 window.Vue = require('vue');
-window.ecole = new Ecole;
+window.Ecole = new Ecole;
 
-console.log('ecole',window.ecole);
+import { extend } from 'vee-validate';
+import { required } from 'vee-validate/dist/rules';
+
+// Add the required rule
+extend('required', {
+  ...required,
+  message: 'This field is required'
+});
+
+// console.log('ecole',window.ecole);
 
 
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
+import { ValidationProvider } from 'vee-validate';;
 import Vuetify from 'vuetify';
 
 import routes from './routes/routes'; 
@@ -26,6 +36,7 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(Vuetify);
 
+Vue.component('validator-provider',ValidationProvider);
 Vue.component('nav-bar',NavBar);
 Vue.component('side-bar', SideBar);
 
@@ -104,6 +115,10 @@ const app = new Vue({
       }
     },
     mounted(){
-      
+      /* Echo.channel('test')
+        .listen('App\\Events\\EnseignantCreated', (e) => {
+          //
+          console.log('event', e);
+        }); */
     }
 });

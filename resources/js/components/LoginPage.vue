@@ -90,7 +90,7 @@ export default {
         sessionStorage.setItem('api',response.data.user.api_token);
         sessionStorage.setItem('user',JSON.stringify(response.data.user));
 
-          this.$router.push('/dashboard');
+          this.$router.push('/');
         })
       .catch( err => console.log('error',err));
 

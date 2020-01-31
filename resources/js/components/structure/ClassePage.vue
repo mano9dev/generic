@@ -44,7 +44,7 @@
 	          <div class="card-body">
 	            <div class="row">
 	              <div class="col-md-12">
-	                <div style="min-height: 400px;"></div>  
+	                <classe-table > </classe-table>
 	              </div>
 	            </div>
 	          </div>    
@@ -52,12 +52,22 @@
 	      </div>
 	    </section>
 	    <!-- /.content -->
+
+			<!-- Classe Edit Modal -->
+			<classe-edit :id="'classe'" ref="classeModal"></classe-edit>
+			<!-- Classe Edit Modal -->
 	  </div>
 	</div>
 </template>
 
 <script>
+
+	import ClasseTable from "../utils/Table/ClasseTable";
+	import ClasseEdit from "../utils/ClasseEdit";
 	export default {
+		components : {
+			ClasseTable,ClasseEdit
+		},
 		data(){
 			return {
 				title:'Classe'

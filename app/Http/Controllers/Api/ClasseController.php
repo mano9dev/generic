@@ -16,6 +16,7 @@ class ClasseController extends Controller
     public function index()
     {
         //
+        return Classe::all();
     }
 
     /**

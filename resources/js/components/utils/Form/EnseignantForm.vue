@@ -80,11 +80,7 @@ export default {
   },
 
   mounted(){
-    Echo.channel('test')
-        .listen('App\\Events\\EnseignantCreated', (e) => {
-          //
-          console.log('event', e);
-        });
+    
   }
 }
 </script>

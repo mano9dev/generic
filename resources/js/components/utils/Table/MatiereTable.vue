@@ -47,14 +47,8 @@ export default {
   },
 
   mounted(){
-    /* this.$http.get('/api/structure/matiere').then( response => {
-      // this.data = response.data;
-      this.matieres= response.data;
-      // console.log('data', this.data);
-    })
-    .catch(error => console.log( error)); */
     
-    ecole.getMatieres()
+    Ecole.getMatieres()
     .then(response => {
       this.matieres = response.data
     })

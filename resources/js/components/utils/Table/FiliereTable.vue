@@ -51,7 +51,7 @@ export default {
       
     })
     .catch(error => console.log( error)); */
-    ecole.getFilieres()
+    Ecole.getFilieres()
     .then( response => {
         console.log('response',response)
         this.filieres=response.data
