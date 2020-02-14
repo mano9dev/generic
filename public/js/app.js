@@ -3639,7 +3639,7 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default(enseignant) {
         var _this = this;
 
-        ecole.createEnseignant(enseignant).then(function (response) {
+        Ecole.createEnseignant(enseignant).then(function (response) {
           console.log('created', response.data);
           _this.enseignant = {};
         })["catch"](function (error) {
@@ -3680,7 +3680,11 @@ __webpack_require__.r(__webpack_exports__);
       this.onSubmitForm(enseignant);
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    Echo.channel('test').listen('EnseignantCreated', function (e) {
+      console.log('event data', e);
+    });
+  }
 });
 
 /***/ }),
@@ -116598,10 +116602,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 
 
-window.io = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js"); // window.Echo = new Echo({
-//   broadcaster: 'socket.io',
-//   host: window.location.hostname + ':6001'
-// });
+window.io = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
+window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  broadcaster: 'socket.io',
+  host: '127.0.0.1:6001'
+});
 
 /***/ }),
 
@@ -118063,6 +118068,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Ecole; });
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -118154,7 +118160,7 @@ function () {
   return Ecole;
 }();
 
-/* harmony default export */ __webpack_exports__["default"] = (Ecole);
+
 
 /***/ }),
 

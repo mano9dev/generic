@@ -38,7 +38,7 @@ export default {
     onSubmitForm:{
       type: Function,
       default(enseignant){
-        ecole.createEnseignant(enseignant)
+        Ecole.createEnseignant(enseignant)
         .then(response => {
           console.log('created',response.data)
           this.enseignant={};
@@ -80,7 +80,10 @@ export default {
   },
 
   mounted(){
-    
+    Echo.channel('test')
+    .listen('EnseignantCreated', (e) => {
+        console.log('event data',e);
+    });
   }
 }
 </script>

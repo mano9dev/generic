@@ -6,6 +6,7 @@ use App\Models\Enseignant;
 use Illuminate\Http\Request;
 use App\Events\EnseignantCreated;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Broadcast;
 
 class EnseignantController extends Controller
 {
@@ -17,7 +18,9 @@ class EnseignantController extends Controller
     public function index()
     {
         //
-        return Enseignant::all();
+        $enseignant=Enseignant::all();
+        broadcast(new EnseignantCreated($enseignant));
+        return  $enseignant;
     }
 
     /**
@@ -34,6 +37,7 @@ class EnseignantController extends Controller
         // $enseignant=Enseignant::create($enseignant);
 
         broadcast(new EnseignantCreated($enseignant));
+
         return response(['created' => true]);
     }
 

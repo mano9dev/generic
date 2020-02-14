@@ -1,7 +1,7 @@
 
 const axios = require('axios');
 
-const Ecole = class Ecole {
+export default class Ecole {
   
   /* Enseignant CRUD CODE HERE */
   getEnseignants() {
@@ -71,5 +71,3 @@ const Ecole = class Ecole {
     return axios.get('/api/structure/classe');
   }
 }
-
-export default Ecole;
