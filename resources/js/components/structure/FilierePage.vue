@@ -65,7 +65,7 @@
 </template>
 
 <script>
-
+import {mapState, mapGetters} from "vuex";
 import FiliereTable from "../utils/Table/FiliereTable";
 import FiliereEdit from "../utils/FiliereEdit";
 export default {
@@ -74,6 +74,9 @@ export default {
       title:'Filiere'
     }
 	},
+
+	// store : this.$parent.$store,
+
 	components : {
 		FiliereTable,
 		FiliereEdit
@@ -86,7 +89,7 @@ export default {
 	},
   mounted(){
 
-    console.log('Component mounted')
+		console.log('Component mounted')
   }
-	}
+}
 </script>

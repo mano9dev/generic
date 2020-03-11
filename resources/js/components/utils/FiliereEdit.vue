@@ -74,7 +74,7 @@
 </template>
 
 <script>
-
+import { mapState, mapGetters } from "vuex";
 import FiliereForm from "./Form/FiliereForm";
 import ClasseForm from "./Form/ClasseForm";
 const CLASSE = {
@@ -104,9 +104,22 @@ export default {
     },
     defaultclasse : {
       type: Object,
-      default : CLASSE
+      default(){
+        return CLASSE;
+        return {
+          libelleClasse : "",
+          fil_codeFil : "",
+          codeClasse : "",
+          libelleClasse: "",
+          niveau: 1,
+          specialite: null,
+          promo_id : 1
+        }
+      }  
     }
   },
+
+  // store : this.$parent.$store,
 
   components : {
     FiliereForm,
@@ -117,6 +130,10 @@ export default {
     return {
       
     }
+  },
+
+  computed : {
+
   },
 
   methods : {

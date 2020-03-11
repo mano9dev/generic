@@ -32,6 +32,8 @@ import routes from './routes/routes';
 import NavBar from './components/NavBar';
 import SideBar from './components/SideBar';
 
+import store from './store/index';
+
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(Vuetify);
@@ -96,6 +98,7 @@ Vue.filter('find', function(value,arg) {
 const app = new Vue({
     el: '#app',
     router,
+    store,
     data : {
         
     },

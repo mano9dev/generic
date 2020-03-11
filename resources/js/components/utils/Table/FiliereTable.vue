@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import {mapState, mapGetters } from 'vuex';
 export default {
   props :{
     
@@ -40,28 +41,28 @@ export default {
 
   data () {
     return {
-      filieres : []
+      
     }
   },
-
-  mounted(){
-    /* this.$http.get('/api/structure/matiere').then( response => {
-      
-      this.filieres= response.data;
-      
+  computed : {
+    ...mapState({
+      filieres : state => state.filiere.filieres
     })
-    .catch(error => console.log( error)); */
+  },
+  created(){
+    this.$store.dispatch('filiere/getAllFilieres')
+  },
+  mounted(){
+
     Ecole.getFilieres()
     .then( response => {
-        console.log('response',response)
-        this.filieres=response.data
+        // console.log('response',response)
+        // this.filieres=response.data
       })
     .catch(error => console.log('error',error));
   },
 
-  computed : {
-    
-  }
+  
 }
 </script>
 
