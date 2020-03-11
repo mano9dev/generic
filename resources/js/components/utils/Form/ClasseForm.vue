@@ -7,60 +7,60 @@
      -->
     <form @submit.prevent="submitForm(classe)">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-4">
           <validator-provider name="libelleClasse" rules="required">
-            <div slot-scope="{ errors }">
-              <input v-model="classe.libelleClasse">
+            <div slot-scope="{ errors }" class="md-form my-0">
+              <input type="text" class="form-control" placeholder="Libelle de la classe" v-model="classe.libelleClasse">
               <p>{{ errors[0] }}</p>
             </div>
           </validator-provider>
         </div>
-        <div class="col-md-4">
+        <div class="col-4">
           <validator-provider name="fil_codeFil" rules="required">
-            <div slot-scope="{ errors }">
-              <input v-model="classe.fil_codeFil">
+            <div slot-scope="{ errors }" class="md-form my-0">
+              <input type="text" class="form-control" placeholder="Code Filiere" v-model="classe.fil_codeFil">
               <p>{{ errors[0] }}</p>
             </div>
           </validator-provider>
         </div>
-        <div class="col-md-4">
-          <validator-provider name="fil_codeFil" rules="required">
-            <div slot-scope="{ errors }">
-              <input v-model="classe.fil_codeFil">
+        <div class="col-4">
+          <validator-provider name="annee_sco" rules="required">
+            <div slot-scope="{ errors }" class="md-form my-0">
+              <input type="text" class="form-control" placeholder="Annee scolaire" v-model="classe.annee_sco">
               <p>{{ errors[0] }}</p>
             </div>
           </validator-provider>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-3">
           <validator-provider name="niveau" rules="required">
-            <div slot-scope="{ errors }">
-              <input v-model="classe.niveau">
+            <div slot-scope="{ errors }" class="md-form my-0">
+              <input type="text" class="form-control" placeholder="Niveau" v-model="classe.niveau">
               <p>{{ errors[0] }}</p>
             </div>
           </validator-provider>
         </div>
-        <div class="col-md-3">
+        <div class="col-3">
           <validator-provider name="groupe" rules="required">
-            <div slot-scope="{ errors }">
-              <input v-model="classe.groupe">
+            <div slot-scope="{ errors }" class="md-form my-0">
+              <input type="text" class="form-control" placeholder="Groupe" v-model="classe.groupe">
               <p>{{ errors[0] }}</p>
             </div>
           </validator-provider>
         </div>
-        <div class="col-md-3">
+        <div class="col-3">
           <validator-provider name="speciatile" rules="required">
-            <div slot-scope="{ errors }">
-              <input v-model="classe.speciatile">
+            <div slot-scope="{ errors }" class="md-form my-0">
+              <input type="text" class="form-control" placeholder="Specialite" v-model="classe.speciatile">
               <p>{{ errors[0] }}</p>
             </div>
           </validator-provider>
         </div>
-        <div class="col-md-3">
+        <div class="col-3">
           <validator-provider name="effectif" rules="required">
-            <div slot-scope="{ errors }">
-              <input v-model="classe.effectif">
+            <div slot-scope="{ errors }" class="md-form my-0">
+              <input type="text" class="form-control" placeholder="Effectif" v-model="classe.effectif">
               <p>{{ errors[0] }}</p>
             </div>
           </validator-provider>

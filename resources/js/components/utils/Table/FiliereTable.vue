@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody v-if="filieres.length > 0">
-        <tr v-for="(filiere, key) in filieres" :key="filiere.id" >
+        <tr v-for="(filiere, key) in filieres" :key="key" >
           <td>{{key+1}}</td>
           <td>{{filiere.codeFil}} </td>
           <td>{{filiere.libelleFil}} </td>

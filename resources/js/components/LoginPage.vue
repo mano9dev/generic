@@ -1,4 +1,5 @@
 <template>
+   <div class="row justify-content-center">
     <div class="login-box">
         <div class="login-logo">
           <a routerLink="dashboard"><b>Generic </b>App</a>
@@ -55,6 +56,7 @@
           <!-- /.login-card-body -->
         </div>
     </div>
+   </div>
 </template>
 
 <script>

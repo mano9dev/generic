@@ -28,7 +28,7 @@ $(function () {
   })
 
   // bootstrap WYSIHTML5 - text editor
-  // $('.textarea').summernote()
+  $('.textarea').summernote()
 
   $('.daterange').daterangepicker({
     ranges   : {
@@ -64,7 +64,7 @@ $(function () {
   }
   // World map by jvectormap
   $('#world-map').vectorMap({
-    map              : 'world_en',
+    map              : 'usa_en',
     backgroundColor  : 'transparent',
     regionStyle      : {
       initial: {

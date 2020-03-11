@@ -30,7 +30,8 @@ class FiliereController extends Controller
         //
         $filiere=$request->only(['codeFil','libelleFil']);
 
-        return Filiere::create($filiere);
+        return $filiere;
+        // return Filiere::create($filiere);
     }
 
     /**

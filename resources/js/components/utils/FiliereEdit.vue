@@ -19,11 +19,12 @@
                 <li class="nav-item">
                   <a class="nav-link active" id="edit-tab" data-toggle="pill" href="#edit" role="tab" aria-controls="edit" aria-selected="true">Editer</a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                   <a class="nav-link" id="assignement-tab" data-toggle="pill" href="#assignement" role="tab" aria-controls="assignement" aria-selected="false">Assignement</a>
-                </li> -->
+                </li>
               </ul>
               <div class="tab-content" id="custom-content-below-tabContent">
+                <!-- Editer -->
                 <div class="tab-pane fade show active" id="edit" role="tabpanel" aria-labelledby="edit-tab">
                  <div class="container">
                    <div class="row">
@@ -34,25 +35,24 @@
                  </div>
                  
                 </div>
+
+                <!-- Assignement -->
                 <div class="tab-pane fade" id="assignement" role="tabpanel" aria-labelledby="assignement-tab">
-                  <div class="container">
-                    <div class="my-3">
-                      <h4>Ajouter une classe à la filière</h4>
-                    </div>
                     <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <div class="custom-control custom-checkbox" v-for="(filiere,key) in filiereList" :key="key">
-                            <input class="custom-control-input" type="checkbox" :id="'filiere-'+key" :value="key">
-                            <label :for="'filiere-'+key" class="custom-control-label">{{filiere.libelleFil}}</label>
+                      <div class="col-11">
+                        <div class="card mb-3">
+                          <div class="card-header">Ajouter une classe à la filière</div>
+                          <div class="card-body">
+                            <div class="border mb-1 p-2">
+                              <classe-form ref="classeForm"> </classe-form>
+                            </div>
+                            <div class="border mb-1 p-2">
+                              <classe-form ref="classeForm"> </classe-form>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
-
-                      </div>
                     </div>
-                  </div>
                 </div>
               </div>
               <div class="tab-custom-content">
@@ -76,6 +76,16 @@
 <script>
 
 import FiliereForm from "./Form/FiliereForm";
+import ClasseForm from "./Form/ClasseForm";
+const CLASSE = {
+  libelleClasse : "",
+  fil_codeFil : "",
+  codeClasse : "",
+  libelleClasse: "",
+  niveau: 1,
+  specialite: null,
+  promo_id : 1
+}
 export default {
   props : {
     id : {
@@ -91,11 +101,16 @@ export default {
       default : function(){
         return [];
       }
+    },
+    defaultclasse : {
+      type: Object,
+      default : CLASSE
     }
   },
 
   components : {
-    FiliereForm
+    FiliereForm,
+    ClasseForm
   },
 
   data(){

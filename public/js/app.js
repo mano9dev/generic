@@ -2295,6 +2295,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2497,9 +2499,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -3364,6 +3363,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Form_FiliereForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form/FiliereForm */ "./resources/js/components/utils/Form/FiliereForm.vue");
+/* harmony import */ var _Form_ClasseForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form/ClasseForm */ "./resources/js/components/utils/Form/ClasseForm.vue");
 //
 //
 //
@@ -3440,6 +3440,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     id: {
@@ -3458,7 +3459,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   components: {
-    FiliereForm: _Form_FiliereForm__WEBPACK_IMPORTED_MODULE_0__["default"]
+    FiliereForm: _Form_FiliereForm__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ClasseForm: _Form_ClasseForm__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {};
@@ -3712,11 +3714,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     btnTitle: {
       type: String,
       "default": 'Enregistrer'
+    },
+    onSubmitForm: {
+      type: Function,
+      "default": function _default(filiere) {
+        Ecole.createFiliere(filiere).then(function (response) {
+          console.log('response', response);
+        })["catch"](function (error) {
+          return console.log('error', error);
+        });
+      }
     }
   },
   data: function data() {
@@ -3748,12 +3788,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitForm: function submitForm(filiere) {
-      // ecole.createFiliere(filiere);
-      console.log('emit submit form', filiere);
-      this.$emit('submitForm', filiere);
-    },
-    createFiliere: function createFiliere(filiere) {
-      ecole.createFiliere(filiere);
+      this.onSubmitForm(filiere);
     }
   }
 });
@@ -55123,97 +55158,99 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "login-box" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-body login-card-body" }, [
-        _c("p", { staticClass: "login-box-msg" }, [
-          _vm._v("Sign in to start your session")
-        ]),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            attrs: { autocomplete: "off" },
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.submitForm(_vm.user)
+  return _c("div", { staticClass: "row justify-content-center" }, [
+    _c("div", { staticClass: "login-box" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body login-card-body" }, [
+          _c("p", { staticClass: "login-box-msg" }, [
+            _vm._v("Sign in to start your session")
+          ]),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              attrs: { autocomplete: "off" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submitForm(_vm.user)
+                }
               }
-            }
-          },
-          [
-            _c("div", { staticClass: "input-group mb-3" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.user.username,
-                    expression: "user.username"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "email",
-                  autocomplete: "off",
-                  autofocus: "",
-                  name: "email",
-                  placeholder: "Email"
-                },
-                domProps: { value: _vm.user.username },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            },
+            [
+              _c("div", { staticClass: "input-group mb-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.username,
+                      expression: "user.username"
                     }
-                    _vm.$set(_vm.user, "username", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm._m(1)
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "input-group mb-3" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.user.password,
-                    expression: "user.password"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "password",
-                  autocomplete: "off",
-                  name: "password",
-                  placeholder: "Password"
-                },
-                domProps: { value: _vm.user.password },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    autocomplete: "off",
+                    autofocus: "",
+                    name: "email",
+                    placeholder: "Email"
+                  },
+                  domProps: { value: _vm.user.username },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "username", $event.target.value)
                     }
-                    _vm.$set(_vm.user, "password", $event.target.value)
                   }
-                }
-              }),
+                }),
+                _vm._v(" "),
+                _vm._m(1)
+              ]),
               _vm._v(" "),
-              _vm._m(2)
-            ]),
-            _vm._v(" "),
-            _vm._m(3)
-          ]
-        ),
-        _vm._v(" "),
-        _vm._m(4),
-        _vm._v(" "),
-        _vm._m(5)
+              _c("div", { staticClass: "input-group mb-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.password,
+                      expression: "user.password"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "password",
+                    autocomplete: "off",
+                    name: "password",
+                    placeholder: "Password"
+                  },
+                  domProps: { value: _vm.user.password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "password", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm._m(2)
+              ]),
+              _vm._v(" "),
+              _vm._m(3)
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(4),
+          _vm._v(" "),
+          _vm._m(5)
+        ])
       ])
     ])
   ])
@@ -55889,7 +55926,30 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(3),
+              _c(
+                "li",
+                { staticClass: "nav-item" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { to: "/placement/planing" }
+                    },
+                    [
+                      _c("i", { staticClass: "nav-icon far fa-calendar-alt" }),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v("Planing "),
+                        _c("span", { staticClass: "badge badge-info right" }, [
+                          _vm._v("2")
+                        ])
+                      ])
+                    ]
+                  )
+                ],
+                1
+              ),
               _vm._v(" "),
               _c("li", { staticClass: "nav-header" }, [_vm._v("AUTRES")]),
               _vm._v(" "),
@@ -56030,31 +56090,6 @@ var staticRenderFns = [
         _vm._v("\n              Placement\n              "),
         _c("i", { staticClass: "right fa fa-angle-left" })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c(
-        "a",
-        {
-          staticClass: "nav-link",
-          attrs: {
-            routerLink: "/placement/planing",
-            routerLinkActive: "active"
-          }
-        },
-        [
-          _c("i", { staticClass: "nav-icon far fa-calendar-alt" }),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v("\n              Planing\n              "),
-            _c("span", { staticClass: "badge badge-info right" }, [_vm._v("2")])
-          ])
-        ]
-      )
     ])
   }
 ]
@@ -57070,48 +57105,29 @@ var render = function() {
                         }
                       },
                       [
-                        _c("div", { staticClass: "container" }, [
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-md-6" }, [
-                              _c(
-                                "div",
-                                { staticClass: "form-group" },
-                                _vm._l(_vm.filiereList, function(filiere, key) {
-                                  return _c(
-                                    "div",
-                                    {
-                                      key: key,
-                                      staticClass:
-                                        "custom-control custom-checkbox"
-                                    },
-                                    [
-                                      _c("input", {
-                                        staticClass: "custom-control-input",
-                                        attrs: {
-                                          type: "checkbox",
-                                          id: "filiere-" + key
-                                        },
-                                        domProps: { value: key }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "label",
-                                        {
-                                          staticClass: "custom-control-label",
-                                          attrs: { for: "filiere-" + key }
-                                        },
-                                        [_vm._v(_vm._s(filiere.libelleFil))]
-                                      )
-                                    ]
-                                  )
-                                }),
-                                0
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "col-md-6" })
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-9" }, [
+                            _c("div", { staticClass: "card mb-3" }, [
+                              _c("div", { staticClass: "card-header" }, [
+                                _vm._v("Ajouter une classe à la filière")
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "card-body" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "border mb-1 p-2" },
+                                  [_c("classe-form", { ref: "classeForm" })],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "border mb-1 p-2" },
+                                  [_c("classe-form", { ref: "classeForm" })],
+                                  1
+                                )
+                              ])
+                            ])
                           ])
                         ])
                       ]
@@ -57119,7 +57135,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(3)
+                _vm._m(2)
               ])
             ],
             2
@@ -57181,17 +57197,27 @@ var staticRenderFns = [
             },
             [_vm._v("Editer")]
           )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link",
+              attrs: {
+                id: "assignement-tab",
+                "data-toggle": "pill",
+                href: "#assignement",
+                role: "tab",
+                "aria-controls": "assignement",
+                "aria-selected": "false"
+              }
+            },
+            [_vm._v("Assignement")]
+          )
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "my-3" }, [
-      _c("h4", [_vm._v("Ajouter une classe à la filière")])
-    ])
   },
   function() {
     var _vm = this
@@ -57240,7 +57266,7 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c(
             "div",
-            { staticClass: "col-md-4" },
+            { staticClass: "col-4" },
             [
               _c("validator-provider", {
                 attrs: { name: "libelleClasse", rules: "required" },
@@ -57249,7 +57275,7 @@ var render = function() {
                     key: "default",
                     fn: function(ref) {
                       var errors = ref.errors
-                      return _c("div", {}, [
+                      return _c("div", { staticClass: "md-form my-0" }, [
                         _c("input", {
                           directives: [
                             {
@@ -57259,6 +57285,11 @@ var render = function() {
                               expression: "classe.libelleClasse"
                             }
                           ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Libelle de la classe"
+                          },
                           domProps: { value: _vm.classe.libelleClasse },
                           on: {
                             input: function($event) {
@@ -57286,7 +57317,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-4" },
+            { staticClass: "col-4" },
             [
               _c("validator-provider", {
                 attrs: { name: "fil_codeFil", rules: "required" },
@@ -57295,7 +57326,7 @@ var render = function() {
                     key: "default",
                     fn: function(ref) {
                       var errors = ref.errors
-                      return _c("div", {}, [
+                      return _c("div", { staticClass: "md-form my-0" }, [
                         _c("input", {
                           directives: [
                             {
@@ -57305,6 +57336,8 @@ var render = function() {
                               expression: "classe.fil_codeFil"
                             }
                           ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: "Code Filiere" },
                           domProps: { value: _vm.classe.fil_codeFil },
                           on: {
                             input: function($event) {
@@ -57332,26 +57365,31 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-4" },
+            { staticClass: "col-4" },
             [
               _c("validator-provider", {
-                attrs: { name: "fil_codeFil", rules: "required" },
+                attrs: { name: "annee_sco", rules: "required" },
                 scopedSlots: _vm._u([
                   {
                     key: "default",
                     fn: function(ref) {
                       var errors = ref.errors
-                      return _c("div", {}, [
+                      return _c("div", { staticClass: "md-form my-0" }, [
                         _c("input", {
                           directives: [
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.classe.fil_codeFil,
-                              expression: "classe.fil_codeFil"
+                              value: _vm.classe.annee_sco,
+                              expression: "classe.annee_sco"
                             }
                           ],
-                          domProps: { value: _vm.classe.fil_codeFil },
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Annee scolaire"
+                          },
+                          domProps: { value: _vm.classe.annee_sco },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -57359,7 +57397,7 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.classe,
-                                "fil_codeFil",
+                                "annee_sco",
                                 $event.target.value
                               )
                             }
@@ -57380,7 +57418,7 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c(
             "div",
-            { staticClass: "col-md-3" },
+            { staticClass: "col-3" },
             [
               _c("validator-provider", {
                 attrs: { name: "niveau", rules: "required" },
@@ -57389,7 +57427,7 @@ var render = function() {
                     key: "default",
                     fn: function(ref) {
                       var errors = ref.errors
-                      return _c("div", {}, [
+                      return _c("div", { staticClass: "md-form my-0" }, [
                         _c("input", {
                           directives: [
                             {
@@ -57399,6 +57437,8 @@ var render = function() {
                               expression: "classe.niveau"
                             }
                           ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: "Niveau" },
                           domProps: { value: _vm.classe.niveau },
                           on: {
                             input: function($event) {
@@ -57426,7 +57466,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-3" },
+            { staticClass: "col-3" },
             [
               _c("validator-provider", {
                 attrs: { name: "groupe", rules: "required" },
@@ -57435,7 +57475,7 @@ var render = function() {
                     key: "default",
                     fn: function(ref) {
                       var errors = ref.errors
-                      return _c("div", {}, [
+                      return _c("div", { staticClass: "md-form my-0" }, [
                         _c("input", {
                           directives: [
                             {
@@ -57445,6 +57485,8 @@ var render = function() {
                               expression: "classe.groupe"
                             }
                           ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: "Groupe" },
                           domProps: { value: _vm.classe.groupe },
                           on: {
                             input: function($event) {
@@ -57472,7 +57514,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-3" },
+            { staticClass: "col-3" },
             [
               _c("validator-provider", {
                 attrs: { name: "speciatile", rules: "required" },
@@ -57481,7 +57523,7 @@ var render = function() {
                     key: "default",
                     fn: function(ref) {
                       var errors = ref.errors
-                      return _c("div", {}, [
+                      return _c("div", { staticClass: "md-form my-0" }, [
                         _c("input", {
                           directives: [
                             {
@@ -57491,6 +57533,8 @@ var render = function() {
                               expression: "classe.speciatile"
                             }
                           ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: "Specialite" },
                           domProps: { value: _vm.classe.speciatile },
                           on: {
                             input: function($event) {
@@ -57518,7 +57562,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-md-3" },
+            { staticClass: "col-3" },
             [
               _c("validator-provider", {
                 attrs: { name: "effectif", rules: "required" },
@@ -57527,7 +57571,7 @@ var render = function() {
                     key: "default",
                     fn: function(ref) {
                       var errors = ref.errors
-                      return _c("div", {}, [
+                      return _c("div", { staticClass: "md-form my-0" }, [
                         _c("input", {
                           directives: [
                             {
@@ -57537,6 +57581,8 @@ var render = function() {
                               expression: "classe.effectif"
                             }
                           ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: "Effectif" },
                           domProps: { value: _vm.classe.effectif },
                           on: {
                             input: function($event) {
@@ -57734,54 +57780,131 @@ var render = function() {
   return _c("div", [
     _c(
       "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.submitForm(_vm.filiere)
+          }
+        }
+      },
       [
-        _c("v-text-field", {
-          attrs: {
-            counter: _vm.form.countDefault,
-            rules: _vm.form.rules.namesRules("Code Filière"),
-            label: "Code Filière",
-            required: ""
-          },
-          model: {
-            value: _vm.filiere.codeFil,
-            callback: function($$v) {
-              _vm.$set(_vm.filiere, "codeFil", $$v)
-            },
-            expression: "filiere.codeFil"
-          }
-        }),
-        _vm._v(" "),
-        _c("v-text-field", {
-          attrs: {
-            counter: _vm.form.countDefault,
-            rules: _vm.form.rules.namesRules("Libelle Filière"),
-            label: "Libelle Filière",
-            required: ""
-          },
-          model: {
-            value: _vm.filiere.libelleFil,
-            callback: function($$v) {
-              _vm.$set(_vm.filiere, "libelleFil", $$v)
-            },
-            expression: "filiere.libelleFil"
-          }
-        }),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-6" },
+            [
+              _c("validator-provider", {
+                attrs: { name: "libelleFil", rules: "required" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(ref) {
+                      var errors = ref.errors
+                      return _c("div", {}, [
+                        _c("div", { staticClass: "md-form" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.filiere.libelleFil,
+                                expression: "filiere.libelleFil"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Libelle de la filière",
+                              id: "libellefil"
+                            },
+                            domProps: { value: _vm.filiere.libelleFil },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.filiere,
+                                  "libelleFil",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("p", [_vm._v(_vm._s(errors[0]))])
+                        ])
+                      ])
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-6" },
+            [
+              _c("validator-provider", {
+                attrs: { name: "codefil", rules: "required" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(ref) {
+                      var errors = ref.errors
+                      return _c("div", {}, [
+                        _c("div", { staticClass: "md-form" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.filiere.codeFil,
+                                expression: "filiere.codeFil"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Code de la filière",
+                              id: "codefil"
+                            },
+                            domProps: { value: _vm.filiere.codeFil },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.filiere,
+                                  "codeFil",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("p", [_vm._v(_vm._s(errors[0]))])
+                        ])
+                      ])
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ]),
         _vm._v(" "),
         _c(
           "button",
-          {
-            staticClass: "btn btn-sm btn-primary",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.submitForm(_vm.filiere)
-              }
-            }
-          },
+          { staticClass: "btn btn-sm btn-primary", attrs: { type: "submit" } },
           [_vm._v(" " + _vm._s(_vm.btnTitle) + " ")]
         )
-      ],
-      1
+      ]
     )
   ])
 }
@@ -58250,7 +58373,7 @@ var render = function() {
         ? _c(
             "tbody",
             _vm._l(_vm.filieres, function(filiere, key) {
-              return _c("tr", { key: filiere.id }, [
+              return _c("tr", { key: key }, [
                 _c("td", [_vm._v(_vm._s(key + 1))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(filiere.codeFil) + " ")]),
@@ -118134,14 +118257,7 @@ function () {
   }, {
     key: "createFiliere",
     value: function createFiliere(filiere) {
-      var promise = new Promise(function (resolve, reject) {
-        axios.post('/api/structure/filiere', filiere).then(function (response) {
-          return resolve(response);
-        })["catch"](function (error) {
-          reject(error);
-        });
-      });
-      return promise;
+      return axios.post('/api/structure/filiere', filiere);
     }
     /* Classe CRUD CODE HERE */
 

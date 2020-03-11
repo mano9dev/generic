@@ -51,13 +51,8 @@ export default class Ecole {
   }
 
   createFiliere(filiere){
-    const promise = new Promise((resolve,reject) =>{
-      axios.post('/api/structure/filiere',filiere)
-      .then( response => resolve(response))
-      .catch( error => { reject(error)})
-    })
 
-    return promise;
+    return axios.post('/api/structure/filiere', filiere);
   }
 
   /* Classe CRUD CODE HERE */

@@ -18,6 +18,9 @@
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
   <!-- Theme style -->
   <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+  <!-- MDB LITE css -->
+  <link rel="stylesheet" href="assets/plugins/mdb/css/mdb.lite.min.css" rel="stylesheet">
+
   <!-- Custom css -->
   <link rel="stylesheet" href="assets/admin.css">
   <!-- Google Font: Source Sans Pro -->
@@ -36,27 +39,29 @@
   <!-- Vue js -->
   <script src="{{ asset('js/app.js') }}"></script>
   <!-- jQuery -->
-  <script src="assets/plugins/jquery/jquery.min.js"></script>
+  <script src="assets/plugins/jquery/jquery.min.js"  type="javascript/text"></script>
   <!-- jQuery UI 1.11.4 -->
-  <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="assets/plugins/jquery-ui/jquery-ui.min.js"  type="javascript/text"></script>
   <!-- Bootstrap 4 -->
-  <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  {{-- <!-- Tempusdominus Bootstrap 4 -->
-  <script src="assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script> --}}
+  <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"  type="javascript/text"></script>
   <!-- DataTables -->
-  <script src="assets/plugins/datatables/jquery.dataTables.js"></script>
-  <script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+  <!-- <script src="assets/plugins/datatables/jquery.dataTables.js" type="javascript/text"></script>
+  <script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js" type="javascript/text"></script> -->
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
     // $.widget.bridge('uibutton', $.ui.button)
   </script>
+
   <!-- AdminLTE App -->
-  <script src="assets/dist/js/adminlte.min.js"></script>
+  <script src="assets/dist/js/adminlte.min.js" ></script>
+
+  <!-- MDB js -->
+  <script src="assets/plugins/mdb/js/mdb.min.js" type="javascript/text"></script>
 
   <!-- AdminLTE for demo purposes -->
-  <script src="assets/dist/js/demo.js"></script>
-  <script src="assets/js/admin.js"></script>
-  {{-- <script src="assets/dist/js/pages/dashboard.js"></script> --}}
+  <!-- <script src="assets/dist/js/demo.js"></script> -->
+  <!-- <script src="assets/js/admin.js" type="javascript/text"></script> -->
+  <!-- {{-- <script src="assets/dist/js/pages/dashboard.js"></script> --}} -->
   
 </body>
 </html>

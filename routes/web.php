@@ -19,10 +19,7 @@ Route::get('/{any}', function (Request $request) {
         return view('index');
     }
 })->where('any', '.*');
-// Route::get('/',function(){
 
-//     return view('index');
-// });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
