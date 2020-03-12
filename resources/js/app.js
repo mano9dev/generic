@@ -5,27 +5,21 @@
  */
 
 require('./bootstrap');
-// const Ecole = require('./ecole').default;
+
+require('./validate');
 import Ecole from "./ecole";
 
 window.Vue = require('vue');
 window.Ecole = new Ecole;
 
-import { extend } from 'vee-validate';
-import { required } from 'vee-validate/dist/rules';
-
-// Add the required rule
-extend('required', {
-  ...required,
-  message: 'This field is required'
-});
 
 // console.log('ecole',window.ecole);
 
 
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
-import { ValidationProvider } from 'vee-validate';;
+import { ValidationProvider, ValidationObserver } from "vee-validate";
+
 import Vuetify from 'vuetify';
 
 import routes from './routes/routes'; 
@@ -39,6 +33,7 @@ Vue.use(VueResource);
 Vue.use(Vuetify);
 
 Vue.component('validator-provider',ValidationProvider);
+Vue.component('validation-observer',ValidationObserver);
 Vue.component('nav-bar',NavBar);
 Vue.component('side-bar', SideBar);
 

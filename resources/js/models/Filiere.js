@@ -21,4 +21,14 @@ export default class Filiere {
     return promise;
   }
   
+  static create(filiere){
+
+    return new Promise((resolve, reject) =>{
+      axios.post('/api/structure/filiere', filiere)
+      .then(response => {
+        resolve(response.data)
+      })
+      .catch(error => reject(console.log('error', error) ))
+    })
+  }
 }

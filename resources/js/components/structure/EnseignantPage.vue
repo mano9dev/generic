@@ -46,7 +46,7 @@
 									<h3 class="card-title">{{title}}</h3>
 								</div>
 								<div class="col-md-6">
-									<button type="button" @click="create()" class="btn btn-block bg-gradient-success"> <i class="fas fa-sm fa-plus"></i> Ajouter</button>
+									<button type="button" @click="create()" class="btn bg-gradient-success"> <i class="fas fa-sm fa-plus"></i> Ajouter</button>
 								</div>
 							</div>
 	          </div>

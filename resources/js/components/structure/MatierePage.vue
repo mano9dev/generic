@@ -41,13 +41,17 @@
 	      <div class="container-fluid-2">
 	        <div class="card card-2">
 	          <div class="card-header">
-	            <h3 class="card-title">{{title}}</h3>
+							<div class="row">
+								<div class="col-6 col-sm-12">
+									<h3 class="card-title">{{title}}</h3>
+								</div>
+								<div class="col-6 col-sm-">
+									<button type="button" @click="$root.$emit('matiere:create')" class="btn bg-gradient-success"> <i class="fas fa-sm fa-plus"></i> Nouveau</button>
+								</div>
+							</div>
 	          </div>
 	          <div class="card-body">
 	            <div class="row">
-								<div class="col-md-12">
-									<button type="button" @click="$root.$emit('matiere:create')" class="btn btn-block bg-gradient-success"> <i class="fas fa-sm fa-plus"></i> Nouveau</button>
-								</div>
 	              <div class="col-md-12">
 	                <matiere-table> </matiere-table>
 	              </div>
