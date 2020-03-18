@@ -7,7 +7,7 @@ export default class Ecole {
   getEnseignants() {
    const promise = new Promise((resolve, reject) =>{
 
-     axios.get('/api/structure/matiere')
+     axios.get('/api/structure/enseignant')
      .then( (response)=>{
        resolve(response)
      } )

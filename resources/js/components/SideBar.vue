@@ -30,7 +30,7 @@
             </router-link>
           </li>
           <li class="nav-item has-treeview" id="structure">
-            <a href="#" class="nav-link">
+            <a href="" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Structure

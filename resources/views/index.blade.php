@@ -11,9 +11,12 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Datatable -->
-  <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <!-- <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css"> -->
+
+  <!-- <link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css"> -->
+  <!-- <link rel="stylesheet" href="assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css"> -->
   <!-- vuetify -->
-  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
   <!-- Theme style -->
@@ -21,8 +24,11 @@
   <!-- MDB LITE css -->
   <link rel="stylesheet" href="assets/plugins/mdb/css/mdb.lite.min.css" rel="stylesheet">
 
-  <!-- Custom css -->
-  <link rel="stylesheet" href="assets/admin.css">
+  <!-- App css -->
+  <link rel="stylesheet" href="css/app.css">
+
+  <!-- Custom css
+  <link rel="stylesheet" href="assets/admin.css"> -->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- Ionicons -->
@@ -44,6 +50,8 @@
   <script src="assets/plugins/jquery-ui/jquery-ui.min.js"  type="javascript/text"></script>
   <!-- Bootstrap 4 -->
   <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"  type="javascript/text"></script>
+
+  <!-- <script src="assets/plugins/select2/js/select2.full.min.js" ></script> -->
   <!-- DataTables -->
   <!-- <script src="assets/plugins/datatables/jquery.dataTables.js" type="javascript/text"></script>
   <script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js" type="javascript/text"></script> -->
@@ -62,6 +70,18 @@
   <!-- <script src="assets/dist/js/demo.js"></script> -->
   <!-- <script src="assets/js/admin.js" type="javascript/text"></script> -->
   <!-- {{-- <script src="assets/dist/js/pages/dashboard.js"></script> --}} -->
-  
+  <script>
+  $(function () {
+    //Initialize Select2 Elements
+    // console.log('init select2')
+    // $('.select2').select2()
+
+    // //Initialize Select2 Elements
+    // $('.select2bs4').select2({
+    //   theme: 'bootstrap4'
+    // })
+
+  })
+</script>
 </body>
 </html>

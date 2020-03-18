@@ -49,17 +49,8 @@ export default {
       filieres : state => state.filiere.filieres
     })
   },
-  created(){
-    this.$store.dispatch('filiere/getAllFilieres')
-  },
   mounted(){
 
-    Ecole.getFilieres()
-    .then( response => {
-        // console.log('response',response)
-        // this.filieres=response.data
-      })
-    .catch(error => console.log('error',error));
   },
 
   

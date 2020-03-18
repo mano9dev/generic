@@ -20,7 +20,8 @@ import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 
-import Vuetify from 'vuetify';
+// import Vuetify from 'vuetify';
+import vSelect from 'vue-select';
 
 import routes from './routes/routes'; 
 import NavBar from './components/NavBar';
@@ -30,8 +31,9 @@ import store from './store/index';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
-Vue.use(Vuetify);
+// Vue.use(Vuetify);
 
+Vue.component('v-select', vSelect);
 Vue.component('validator-provider',ValidationProvider);
 Vue.component('validation-observer',ValidationObserver);
 Vue.component('nav-bar',NavBar);

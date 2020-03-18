@@ -1,7 +1,7 @@
 <template>
      <!-- validation-observer -->
      <div>
-      <validation-observer ref="form" v-slot="{ invalid }">
+      <validation-observer :ref="id" v-slot="{ invalid }">
         <form @submit.prevent="submitForm(fil)">
           <div class="row">
             <div class="col-6">
@@ -41,6 +41,7 @@ export default {
       type: String,
       default : 'Enregistrer'
     },
+    id: String,
     filiere : {
       type: Object,
       default (){
@@ -50,7 +51,7 @@ export default {
     onSubmitForm:{
       type : Function,
       default(filiere){
-        this.$refs.form.validate()
+        this.$refs[this.id].validate()
         .then(valid => {
           alert('Validate', valid)
           if (valid) {
@@ -59,7 +60,7 @@ export default {
               if (response != null) {
                 this.fil = {}
                 this.$nextTick(() =>{
-                  this.$refs.form.reset();
+                  this.$refs[this.id].reset();
                 })
               }
             })

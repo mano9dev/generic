@@ -28,7 +28,7 @@ export default class Filiere {
       .then(response => {
         resolve(response.data)
       })
-      .catch(error => reject(console.log('error', error) ))
+      .catch(error => { reject(console.log('error', error)) })
     })
   }
 }

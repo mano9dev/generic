@@ -3,17 +3,25 @@ import Filiere from "../../models/Filiere";
 // state 
 const state = {
   filieres : [],
-  createdStatus : null
+  createdStatus : null,
+  selectedFiliere : null
 }
 
 // getters
 const getters = {
+  getFilieres(state){
 
+    return state.filieres;
+  },
+  selectedFiliere(state){
+
+    return state.selectedFiliere;
+  }
 }
 
 // actions
 const actions = {
-  getAllFilieres({commit}){
+  initFiliere({commit}){
     Filiere.all()
     .then(response => {
       console.log('response.data', response)
@@ -27,12 +35,16 @@ const actions = {
       Filiere.create(filiere)
       .then(response => {
         commit('pushFiliereToList',response)
+        commit('selected', response)
 
         resolve(response)
       })
       
     })
+  },
 
+  setSelected({commit}, filiere){
+    commit('selected',filiere)
   }
 
 }
@@ -42,9 +54,6 @@ const mutations = {
   setFilieres(state, filieres){
     state.filieres = filieres;
 
-    // console.log('state', state);
-    // console.log('filieres', filieres);
-    // console.log('state filieres', state.filieres)
   },
   pushFiliereToList(state, filiere){
     // state.filieres.splice(0,0,filiere)
@@ -52,11 +61,17 @@ const mutations = {
     console.log('state.filieres', state.filieres);
   },
 
+  selected(state, filiere){
+    
+    state.selectedFiliere= filiere;
+  },
+
 }
 
 export default {
   namespaced : true,
   state,
+  getters,
   actions,
   mutations,
 }

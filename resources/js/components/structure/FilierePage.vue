@@ -98,9 +98,17 @@ export default {
 			$('#filiere-modal').modal('show');
 		}
 	},
+	created(){
+		console.log('Component created')
+		this.$store.dispatch('filiere/initFiliere')
+	},
   mounted(){
 
 		console.log('Component mounted')
   }
 }
 </script>
+
+<style src="">
+	
+</style>
